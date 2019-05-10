@@ -1,0 +1,55 @@
+" Vim 的默认寄存器和系统剪贴板共享
+set clipboard+=unnamed
+set history=100000
+" select模式下复制
+if has("clipboard")
+    vnoremap <C-C> "+y
+endif
+
+let mapleader = ","
+" 映射到idea快捷键
+" 弹出输入框，可以跳到指定类
+nnoremap <Leader>gc :action GotoClass<CR>
+" 弹出输入框，跳转到指定操作
+nnoremap <Leader>ga :action GotoAction<CR>
+" 跳转到定义
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+" 跳转到实现
+nnoremap <Leader>gi :action GotoImplementation<CR>
+" 跳转到指定的文件
+nnoremap <Leader>gf :action GotoFile<CR>
+" 跳转到方法的声明
+nnoremap <Leader>gs :action GotoSuperMethod<CR>
+" 跳转到测试
+nnoremap <Leader>gt :action GotoTest<CR>
+" 跳转到变量的声明
+nnoremap <Leader>gS :action GotoSymbol<CR>
+
+" 查找使用
+nnoremap <Leader>fu :action FindUsages<CR>
+" 显示使用
+nnoremap <Leader>su :action ShowUsages<CR>
+
+" 前进，相当似于eclipse中的alt+方向右键
+nnoremap gf :action Forward<CR>
+" 后退，相当于eclipse中的alt+方向左键
+nnoremap gb :action Back<CR>
+
+" gh=go head, 映射vim中的^
+nnoremap gh ^
+" gl=go last，映射vim中的$
+nnoremap gl $
+
+" Window operation
+nnoremap <Leader>ww <C-W>w
+nnoremap <Leader>wc <C-W>c
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wl <C-W>l
+nnoremap <Leader>ws <C-W>s
+nnoremap <Leader>w- <C-W>-
+nnoremap <Leader>w+ <C-W>+
+nnoremap <Leader>w= <C-W>=
+
+nnoremap <Leader>wv <C-W>vf
