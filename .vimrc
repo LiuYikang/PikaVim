@@ -202,3 +202,13 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
 """"""""""""""""""""""""""""""
 let g:ctrlsf_default_view_mode = 'compact'
 map <c-f> :CtrlSF<space>
+
+""""""""""""""""""""""""""""""
+" set vim-go
+""""""""""""""""""""""""""""""
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+map <c-i> :GoReferrers<cr>
