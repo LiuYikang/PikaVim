@@ -129,6 +129,34 @@ let g:tagbar_expand = 1
 let g:tagbar_autopreview = 1
 nmap <silent> <Leader>bb :TagbarToggle<cr>
 
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
 """""""""""""""""""""""""""""
 " delimitMate setting
 """""""""""""""""""""""""""""
@@ -143,6 +171,33 @@ let g:delimitMate_expand_inside_quotes = 1
 " NERDCommenter setting
 """""""""""""""""""""""""""""
 let g:NERDSpaceDelims=1
+" [count]<leader>cc |NERDComComment|
+" Comment out the current line or text selected in visual mode.
+" [count]<leader>cn |NERDComNestedComment|
+" Same as cc but forces nesting.
+" [count]<leader>c<space> |NERDComToggleComment|
+" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+" [count]<leader>cm |NERDComMinimalComment|
+" Comments the given lines using only one set of multipart delimiters.
+" [count]<leader>ci |NERDComInvertComment|
+" Toggles the comment state of the selected line(s) individually.
+" [count]<leader>cs |NERDComSexyComment|
+" Comments out the selected lines with a pretty block formatted layout.
+" [count]<leader>cy |NERDComYankComment|
+" Same as cc except that the commented line(s) are yanked first.
+" <leader>c$ |NERDComEOLComment|
+" Comments the current line from the cursor to the end of line.
+" <leader>cA |NERDComAppendComment|
+" Adds comment delimiters to the end of line and goes into insert mode between them.
+" |NERDComInsertComment|
+" Adds comment delimiters at the current cursor position and inserts between. Disabled by default.
+" <leader>ca |NERDComAltDelim|
+" Switches to the alternative set of delimiters.
+" [count]<leader>cl
+" [count]<leader>cb |NERDComAlignedComment|
+" Same as |NERDComComment| except that the delimiters are aligned down the left side (<leader>cl) or both sides (<leader>cb).
+" [count]<leader>cu |NERDComUncommentLine|
+" Uncomments the selected line(s).
 
 """""""""""""""""""""""""""""
 " ctrlp setting
@@ -206,9 +261,42 @@ map <c-f> :CtrlSF<space>
 """"""""""""""""""""""""""""""
 " set vim-go
 """"""""""""""""""""""""""""""
+let g:go_version_warning = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_structs = 1
 let g:go_highlight_build_constraints = 1
+
+let g:go_def_mode = 'gopls'
+
+nmap <silent> <leader>gi :GoImports<cr>
+
 map <c-i> :GoReferrers<cr>
+" imap <C-Space> <C-x><C-o>
+
+""""""""""""""""""""""""""""""
+" set ycm
+""""""""""""""""""""""""""""""
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '<c-z>'
+set completeopt=menu,menuone
+
+noremap <c-z> <NOP>
+
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
+
+
