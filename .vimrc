@@ -63,9 +63,15 @@ set magic
 " Colors and Fonts
 """"""""""""""""""""""""""""""
 syntax enable
-colorscheme desert_my
-"packadd! onedark.vim
-"colorscheme onedark
+" colorscheme desert_my
+let g:onedark_color_overrides = {
+\ "black": {"gui": "#2F343F", "cterm": "NONE", "cterm16": "0"},
+\}
+set background=dark
+packadd! onedark.vim
+colorscheme onedark
+"colorscheme one
+"set background=dark
 
 """"""""""""""""""""""""""""""
 " Statusline
